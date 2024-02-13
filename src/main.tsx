@@ -5,13 +5,13 @@ import ReactDOM from 'react-dom/client'
 //import App from './fetching-data-proj/components/App'
 import App from './game-hub-proj/components/App'
 import 'bootstrap/dist/css/bootstrap.css'
-
+import { ChakraProvider } from '@chakra-ui/react'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-
-    <App />
-
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
 )
