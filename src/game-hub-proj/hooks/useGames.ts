@@ -20,7 +20,8 @@ const useGames = (gameQueryBy: IGameQueryBy) => {
         {
             params: {
                 genres: gameQueryBy.genre?.id,
-                platforms: gameQueryBy.platform?.id
+                platforms: gameQueryBy.platform?.id,
+                ordering: gameQueryBy.sortOrder
             }
         },
         [gameQueryBy]
