@@ -1,6 +1,6 @@
 import useFetchData from "./useFetchData";
 
-interface Genre {
+export interface Genre {
     id: number;
     name: string;
     image_background: string;
