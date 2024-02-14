@@ -1,11 +1,7 @@
 import useFetchData from "./useFetchData";
 import { Genre } from "./useGenres";
+import { Platform } from "./usePlatform";
 
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
 
 export interface Game {
     id: number;
@@ -17,11 +13,16 @@ export interface Game {
 }
 
 
-const useGames = (selectedGenre: Genre | null) => {
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => {
     const { data, error, isLoading } = useFetchData<Game>(
         '/games',
-        { params: { genres: selectedGenre?.id } },
-        [selectedGenre?.id]
+        {
+            params: {
+                genres: selectedGenre?.id,
+                platforms: selectedPlatform?.id
+            }
+        },
+        [selectedGenre?.id, selectedPlatform?.id]
     );
     return { games: data, error, isLoading }
 }
