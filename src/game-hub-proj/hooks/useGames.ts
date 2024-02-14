@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import api from '../services/api'
-import { CanceledError } from "axios";
+import useFetchData from "./useFetchData";
 
 export interface Platform {
     id: number;
@@ -16,35 +14,10 @@ export interface Game {
     rating: number;
 }
 
-interface FetchGamesResponse {
-    count: number;
-    results: Game[];
-}
 
 const useGames = () => {
-    const [games, setGames] = useState<Game[]>();
-    const [error, setError] = useState();
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        const controller = new AbortController();
-
-        setIsLoading(true);
-
-        api.get<FetchGamesResponse>('/games', { signal: controller.signal })
-            .then(res => setGames(res.data.results))
-            .catch(err => {
-                if (err instanceof CanceledError) return;
-                setError(err.message)
-            })
-            .finally(() =>
-                setIsLoading(false)
-            );
-
-        return () => controller.abort(); //the function we return inside the useEffect is the clean-up function that will run when the component removed from screen
-    }, []);
-
-    return { games, error, isLoading };
+    const { data, error, isLoading } = useFetchData<Game>('/games');
+    return { games: data, error, isLoading }
 }
 
 export default useGames;
