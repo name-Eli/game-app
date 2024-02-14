@@ -1,13 +1,13 @@
 import useFetchData from "./useFetchData";
 
-export interface Platform {
+export interface IPlatform {
     id: number;
     name: string;
     slug: string;
 }
 
 const usePlatforms = () => {
-    const { data, error, isLoading } = useFetchData<Platform>('/platforms/lists/parents');
+    const { data, error, isLoading } = useFetchData<IPlatform>('/platforms/lists/parents');
     return { platforms: data, error, isLoading }
 }
 

@@ -3,7 +3,7 @@ import api from '../services/api'
 import { AxiosRequestConfig, CanceledError } from "axios";
 
 
-interface FetchResponse<T> {
+interface IFetchResponse<T> {
     count: number;
     results: T[];
 }
@@ -21,7 +21,7 @@ const useFetchData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, e
         setIsLoading(true);
         const controller = new AbortController();
         try {
-            const promise = await api.get<FetchResponse<T>>(endpoint, {
+            const promise = await api.get<IFetchResponse<T>>(endpoint, {
                 signal: controller.signal,
                 ...requestConfig
             });

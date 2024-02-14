@@ -1,28 +1,29 @@
+import { IGameQueryBy } from "../components/App";
 import useFetchData from "./useFetchData";
-import { Genre } from "./useGenres";
-import { Platform } from "./usePlatform";
+import { IGenre } from "./useGenres";
+import { IPlatform } from "./usePlatform";
 
 
-export interface Game {
+export interface IGame {
     id: number;
     name: string;
     background_image: string;
-    parent_platforms: { platform: Platform }[]
+    parent_platforms: { platform: IPlatform }[]
     rating: number;
-    genres: Genre[];
+    genres: IGenre[];
 }
 
 
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => {
-    const { data, error, isLoading } = useFetchData<Game>(
+const useGames = (gameQueryBy: IGameQueryBy) => {
+    const { data, error, isLoading } = useFetchData<IGame>(
         '/games',
         {
             params: {
-                genres: selectedGenre?.id,
-                platforms: selectedPlatform?.id
+                genres: gameQueryBy.genre?.id,
+                platforms: gameQueryBy.platform?.id
             }
         },
-        [selectedGenre?.id, selectedPlatform?.id]
+        [gameQueryBy]
     );
     return { games: data, error, isLoading }
 }
