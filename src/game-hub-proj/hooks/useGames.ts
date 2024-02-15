@@ -9,8 +9,8 @@ export interface IGame {
     name: string;
     background_image: string;
     parent_platforms: { platform: IPlatform }[]
-    rating: number;
     genres: IGenre[];
+    rating: number;
 }
 
 

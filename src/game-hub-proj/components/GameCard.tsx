@@ -1,7 +1,7 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import { IGame } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
-import Rating from "./Rating";
+import Rating, { ratingChecker } from "./Rating";
 import getSmallImageUrl from "../services/image-url";
 
 interface Props {
@@ -17,7 +17,7 @@ const GameCard = ({ game }: Props) => {
                     <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
                     <Rating rating={game.rating} />
                 </HStack>
-                <Heading fontSize='2xl'>{game.name}</Heading>
+                <Heading fontSize='2xl'>{`${game.name} ${ratingChecker(game.rating, ['🎯', '👍', '🩻'])}`}</Heading>
             </CardBody>
         </Card>
     );
