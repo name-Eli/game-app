@@ -1,10 +1,10 @@
 import { Button, HStack, Heading, Image, List, ListItem, Spinner } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres, { IGenre } from "../hooks/useGenres";
 import getSmallImageUrl from "../services/image-url";
 
 interface Props {
-    selectedGenre: Genre | null;
-    onGenreSelected: (genre: Genre) => void;
+    selectedGenre: IGenre | null;
+    onGenreSelected: (genre: IGenre) => void;
 }
 
 const GenreList = ({ selectedGenre, onGenreSelected }: Props) => {
