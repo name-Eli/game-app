@@ -8,7 +8,7 @@ interface IFetchResponse<T> {
 
 const useFetchData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, effectDependencies: any[] = []) => {
     const [data, setData] = useState<T[] | undefined>();
-    const [error, setError] = useState<string | undefined>();
+    const [error, setError] = useState<Error | undefined>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
