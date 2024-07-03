@@ -13,11 +13,11 @@ const GameGrid = ({ gameQueryBy }: Props) => {
     const { games, error, isLoading } = useGames(gameQueryBy);
     const skeletons = [1, 2, 3, 4, 5, 6];
 
-    if (error) return <Text>{error}</Text>;
+    if (error) return <Text>{error.message}</Text>;
 
     return (
         <SimpleGrid
-            columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+            columns={{ 'sm': 1, 'md': 2, 'lg': 3, 'xl': 4, '2xl': 5 }}
             padding='10px'
             spacing={6}>
             {
