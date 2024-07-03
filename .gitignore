@@ -27,3 +27,4 @@ dist-ssr
 src/expense-tracker-proj
 src/fetching-data-proj
 src/learning-proj
+.vercel/project.json
