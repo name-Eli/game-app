@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { IGameQueryBy } from "../components/App";
 import { IGenre } from "./useGenres";
 import { IPlatform } from "./usePlatform";
-import axiosInstance, { IFetchResponse } from "../services/api";
+import ApiClient from "../services/api";
 
 
 export interface IGame {
@@ -33,18 +33,18 @@ export interface IGame {
 // }
 
 //=====Fetch data using React Query=====
+const apiClient = new ApiClient<IGame>('/games');
+
 const useGames = (gameQueryBy: IGameQueryBy) => useQuery({
     queryKey: ['games', gameQueryBy],
-    queryFn: () => axiosInstance
-        .get<IFetchResponse<IGame>>('/games', {
-            params: {
-                genres: gameQueryBy.genre?.id,
-                parent_platforms: gameQueryBy.platform?.id,
-                ordering: gameQueryBy.sortOrder,
-                search: gameQueryBy.searchText
-            }
-        })
-        .then(res => res.data.results)
+    queryFn: () => apiClient.get({
+        params: {
+            genres: gameQueryBy.genre?.id,
+            parent_platforms: gameQueryBy.platform?.id,
+            ordering: gameQueryBy.sortOrder,
+            search: gameQueryBy.searchText
+        }
+    })
 })
 
 export default useGames;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api, { IFetchResponse } from '../services/api';
+import { axiosInstance, IFetchResponse } from '../services/api';
 import { AxiosRequestConfig, CanceledError } from "axios";
 
 const useFetchData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, effectDependencies: any[] = []) => {
@@ -12,7 +12,7 @@ const useFetchData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, e
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await api.get<IFetchResponse<T>>(endpoint, {
+                const response = await axiosInstance.get<IFetchResponse<T>>(endpoint, {
                     signal: controller.signal,
                     ...requestConfig
                 });

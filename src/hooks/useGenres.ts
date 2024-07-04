@@ -1,7 +1,7 @@
 //import useFetchData from "./useFetchData";
 import { useQuery } from "@tanstack/react-query";
 import rawGenres from "../data/genres";
-import axiosInstance, { IFetchResponse } from "../services/api";
+import ApiClient from "../services/api";
 
 export interface IGenre {
     id: number;
@@ -19,11 +19,11 @@ export interface IGenre {
 //const useGenres = () => ({ genres: rawGenres, error: null, isLoading: false })
 
 //=====Fetch data using React Query=====
+const apiClient = new ApiClient<IGenre>('/genres');
+
 const useGenres = () => useQuery({
     queryKey: ['genres'],
-    queryFn: () => axiosInstance
-        .get<IFetchResponse<IGenre>>('/genres')
-        .then(res => res.data.results),
+    queryFn: apiClient.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
     initialData: rawGenres
 })
