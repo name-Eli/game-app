@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+export interface IFetchResponse<T> {
+    results: T[];
+}
+
 const axiosInstance = axios.create({
     baseURL: "https://api.rawg.io/api",
     params: {

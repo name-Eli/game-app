@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import api from '../services/api';
+import api, { IFetchResponse } from '../services/api';
 import { AxiosRequestConfig, CanceledError } from "axios";
-
-interface IFetchResponse<T> {
-    results: T[];
-}
 
 const useFetchData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, effectDependencies: any[] = []) => {
     const [data, setData] = useState<T[] | undefined>();
