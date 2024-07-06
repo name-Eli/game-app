@@ -1,7 +1,7 @@
 //import useFetchData from "./useFetchData";
 import { useQuery } from "@tanstack/react-query";
 import rawPlatforms from "../data/platforms";
-import ApiClient from "../services/api";
+import ApiClient, { IFetchResponse } from "../services/api";
 
 export interface IPlatform {
     id: number;
@@ -21,11 +21,11 @@ export interface IPlatform {
 //=====Fetch data using React Query=====
 const apiClient = new ApiClient<IPlatform>('/platforms/lists/parents');
 
-const usePlatforms = () => useQuery({
+const usePlatforms = () => useQuery<IFetchResponse<IPlatform>, Error>({
     queryKey: ['platforms'],
     queryFn: apiClient.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
-    initialData: rawPlatforms
+    initialData: { count: rawPlatforms.length, results: rawPlatforms, next: null }
 })
 
 export default usePlatforms;
