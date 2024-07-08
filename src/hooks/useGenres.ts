@@ -1,6 +1,6 @@
 //import useFetchData from "./useFetchData";
 import { useQuery } from "@tanstack/react-query";
-import rawGenres from "../data/genres";
+import staticGenres from "../data/genres";
 import ApiClient, { IFetchResponse } from "../services/api";
 
 export interface IGenre {
@@ -25,7 +25,7 @@ const useGenres = () => useQuery<IFetchResponse<IGenre>, Error>({
     queryKey: ['genres'],
     queryFn: apiClient.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
-    initialData: { count: rawGenres.length, results: rawGenres, next: null }
+    initialData: staticGenres
 })
 
 export default useGenres;
