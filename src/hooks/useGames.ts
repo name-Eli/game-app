@@ -4,6 +4,7 @@ import { IGameQueryBy } from "../components/App";
 import { IGenre } from "./useGenres";
 import { IPlatform } from "./usePlatform";
 import ApiClient, { IFetchResponse } from "../services/api";
+import { hoursToMilliseconds } from "../utils/calculateTime";
 
 
 export interface IGame {
@@ -50,7 +51,7 @@ const useGames = (gameQueryBy: IGameQueryBy) => useInfiniteQuery<IFetchResponse<
     getNextPageParam: (lastPage, allPages) => {
         return lastPage.next ? allPages.length + 1 : undefined;
     },
-    staleTime: 24 * 60 * 60 * 1000 //24h
+    staleTime: hoursToMilliseconds(24),
 })
 
 export default useGames;
