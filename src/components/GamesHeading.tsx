@@ -1,13 +1,12 @@
 import { Heading } from "@chakra-ui/react";
-import { IGameQueryBy } from "./App";
+import useGameQueryState from "../states/gameQueryState";
 
+const GamesHeading = () => {
 
-interface Props {
-    gameQueryBy: IGameQueryBy;
-}
+    const selctedGenre = useGameQueryState(state => state.gameQueryBy.genre);
+    const selectedPlatform = useGameQueryState(state => state.gameQueryBy.platform);
 
-const GamesHeading = ({ gameQueryBy }: Props) => {
-    const title = `${gameQueryBy.platform?.name || ''} ${gameQueryBy.genre?.name || ''} Games`
+    const title = `${selectedPlatform?.name || ''} ${selctedGenre?.name || ''} Games`
 
     return (
         <Heading as='h1' marginY={5} fontSize='5xl'>

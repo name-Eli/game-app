@@ -1,14 +1,16 @@
 import { Button, HStack, Heading, Image, List, ListItem, Spinner } from "@chakra-ui/react";
-import useGenres, { IGenre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getSmallImageUrl from "../services/image-url";
+import useGameQueryState from "../states/gameQueryState";
 
-interface Props {
-    selectedGenre: IGenre | null;
-    onGenreSelected: (genre: IGenre) => void;
-}
+const GenreList = () => {
 
-const GenreList = ({ selectedGenre, onGenreSelected }: Props) => {
+    //Server state
     const { data, error, isLoading } = useGenres();
+
+    //Client state
+    const selectedGenre = useGameQueryState(state => state.gameQueryBy.genre);
+    const setSelectedGenre = useGameQueryState(state => state.setSelectedGenre);
 
     if (error) return null;
     if (isLoading) return <Spinner />
@@ -28,7 +30,7 @@ const GenreList = ({ selectedGenre, onGenreSelected }: Props) => {
                                     objectFit='cover'
                                 />
                                 <Button
-                                    onClick={() => onGenreSelected(genre)}
+                                    onClick={() => setSelectedGenre(genre)}
                                     variant='link'
                                     fontSize='lg'
                                     margin={0}

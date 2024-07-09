@@ -1,17 +1,17 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 import { KeyboardEvent } from "react";
+import useGameQueryState from "../states/gameQueryState";
 
-interface Props {
-    onSearch: (searchText: string) => void;
-}
+const SearchBar = () => {
 
-const SearchBar = ({ onSearch }: Props) => {
+    const setSearchText = useGameQueryState(state => state.setSearchText);
+
     function handleKeyDown(event: KeyboardEvent) {
         if (event.key === "Enter") {
             const searchText = (event.target as HTMLTextAreaElement).value;
             if (searchText) {
-                onSearch(searchText)
+                setSearchText(searchText);
             }
         }
     }
