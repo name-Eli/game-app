@@ -12,4 +12,5 @@ const useTrailer = (gameId: number) => {
         queryFn: apiClient.get
     })
 }
+
 export default useTrailer;
