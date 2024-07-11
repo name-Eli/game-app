@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <>
             <NavBar />
-            <Outlet />
+            <Outlet /> {/*Layout children*/}
         </>
     )
 }

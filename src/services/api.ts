@@ -26,6 +26,12 @@ class ApiClient<T> {
             .get<IFetchResponse<T>>(this.endpoint, params)
             .then(res => res.data);
     }
+
+    getById = (id: number | string) => {
+        return axiosInstance
+            .get<T>(`${this.endpoint}/${id}`)
+            .then(res => res.data);
+    }
 }
 
 

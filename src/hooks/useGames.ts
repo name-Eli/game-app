@@ -9,6 +9,8 @@ import useGameQueryState from "../states/gameQueryState";
 export interface IGame {
     id: number;
     name: string;
+    slug: string;
+    description_raw: string;
     background_image: string;
     parent_platforms: { platform: IPlatform }[]
     genres: IGenre[];
