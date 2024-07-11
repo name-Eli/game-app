@@ -19,7 +19,7 @@ const useGames = () => {
                 parent_platforms: gameQueryBy.platform?.id,
                 ordering: gameQueryBy.sortOrder,
                 search: gameQueryBy.searchText,
-                pageParam: pageParam
+                page: pageParam
             }
         }),
         initialPageParam: 1,
