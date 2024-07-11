@@ -1,5 +1,6 @@
 import { SimpleGrid, Image } from "@chakra-ui/react";
 import useScreenshots from "../hooks/useScreenshots";
+import ScreenshotSkeleton from "./ScreenshotSkeleton";
 
 
 interface Props {
@@ -9,14 +10,18 @@ interface Props {
 const GameScreenshots = ({ gameId }: Props) => {
     const { data, error, isLoading } = useScreenshots(gameId);
 
-    if (isLoading) return null;
     if (error) throw error;
+
+    const skeletons = [1, 2, 3, 4, 5, 6];
 
     return (
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={2}>
-            {data?.results.map(screenshot =>
-                <Image key={screenshot.id} src={screenshot.image} />
-            )}
+            {isLoading ?
+                skeletons.map(skeleton => <ScreenshotSkeleton key={skeleton} />)
+                :
+                data?.results.map(screenshot =>
+                    <Image key={screenshot.id} src={screenshot.image} />
+                )}
         </SimpleGrid>
     )
 
