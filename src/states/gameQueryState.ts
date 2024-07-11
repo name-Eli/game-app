@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { IGenre } from "../entities/IGenre";
-import { IPlatform } from "../entities/IPlatform";
+import IGenre from "../entities/IGenre";
+import IPlatform from "../entities/IPlatform";
 
 
 interface IGameQueryBy {

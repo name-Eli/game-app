@@ -1,9 +1,9 @@
-import { IGenre } from "./IGenre";
-import { IPlatform } from "./IPlatform";
-import { IPublisher } from "./IPublisher";
+import IGenre from "./IGenre";
+import IPlatform from "./IPlatform";
+import IPublisher from "./IPublisher";
 
 
-export interface IGame {
+interface IGame {
     id: number;
     name: string;
     slug: string;
@@ -14,3 +14,5 @@ export interface IGame {
     genres: IGenre[];
     rating: number;
 }
+
+export default IGame;

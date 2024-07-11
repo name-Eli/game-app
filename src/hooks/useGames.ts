@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api";
-import { IFetchResponse } from '../entities/IFetchResponse';
-import { IGame } from "../entities/IGame";
+import IFetchResponse from '../entities/IFetchResponse';
+import IGame from "../entities/IGame";
 import { hoursToMilliseconds } from "../utils/calculateTime";
 import useGameQueryState from "../states/gameQueryState";
 

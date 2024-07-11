@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api";
-import { ITrailer } from "../entities/ITrailer";
-import { IFetchResponse } from "../entities/IFetchResponse";
+import ITrailer from "../entities/ITrailer";
+import IFetchResponse from "../entities/IFetchResponse";
 
 
 const useTrailer = (gameId: number) => {

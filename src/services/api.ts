@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { IFetchResponse } from '../entities/IFetchResponse';
+import IFetchResponse from '../entities/IFetchResponse';
 
 
 export const axiosInstance = axios.create({

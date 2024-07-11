@@ -1,5 +1,5 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
-import { IGame } from "../entities/IGame";
+import IGame from "../entities/IGame";
 import PlatformIconList from "./PlatformIconList";
 import Rating from "./Rating";
 import getSmallImageUrl from "../services/image-url";

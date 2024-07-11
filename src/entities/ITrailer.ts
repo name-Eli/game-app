@@ -4,10 +4,11 @@ interface IMovieResolution {
     max: string;
 }
 
-export interface ITrailer {
+interface ITrailer {
     id: number;
     name: string;
     preview: string;
     data: IMovieResolution;
 }
 
+export default ITrailer;
