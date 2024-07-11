@@ -1,12 +1,13 @@
 
 import { QueryClient } from '@tanstack/react-query'
+import { minutesToMilliseconds } from '../utils/calculateTime';
 
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
             retry: 2,
-            gcTime: 300_000, //5m
-            staleTime: 300_000,
+            gcTime: minutesToMilliseconds(5),
+            staleTime: minutesToMilliseconds(5),
             refetchOnWindowFocus: false,
             refetchOnReconnect: false,
         }
