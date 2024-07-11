@@ -1,13 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import staticGenres from "../data/genres";
-import ApiClient, { IFetchResponse } from "../services/api";
+import ApiClient from "../services/api";
+import { IFetchResponse } from '../entities/IFetchResponse';
+import { IGenre } from "../entities/IGenre";
 import { hoursToMilliseconds } from "../utils/calculateTime";
-
-export interface IGenre {
-    id: number;
-    name: string;
-    image_background: string;
-}
 
 const apiClient = new ApiClient<IGenre>('/genres');
 

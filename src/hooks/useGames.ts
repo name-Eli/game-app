@@ -1,21 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { IGenre } from "./useGenres";
-import { IPlatform } from "./usePlatform";
-import ApiClient, { IFetchResponse } from "../services/api";
+import ApiClient from "../services/api";
+import { IFetchResponse } from '../entities/IFetchResponse';
+import { IGame } from "../entities/IGame";
 import { hoursToMilliseconds } from "../utils/calculateTime";
 import useGameQueryState from "../states/gameQueryState";
 
-
-export interface IGame {
-    id: number;
-    name: string;
-    slug: string;
-    description_raw: string;
-    background_image: string;
-    parent_platforms: { platform: IPlatform }[]
-    genres: IGenre[];
-    rating: number;
-}
 
 const apiClient = new ApiClient<IGame>('/games');
 

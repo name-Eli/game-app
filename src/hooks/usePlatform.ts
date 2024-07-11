@@ -1,13 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import staticPlatforms from "../data/platforms";
-import ApiClient, { IFetchResponse } from "../services/api";
+import ApiClient from "../services/api";
+import { IFetchResponse } from '../entities/IFetchResponse';
+import { IPlatform } from "../entities/IPlatform";
 import { hoursToMilliseconds } from "../utils/calculateTime";
-
-export interface IPlatform {
-    id: number;
-    name: string;
-    slug: string;
-}
 
 const apiClient = new ApiClient<IPlatform>('/platforms/lists/parents');
 
