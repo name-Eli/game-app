@@ -1,6 +1,14 @@
-Hi, if this is your first time downloading this repository, please follow these steps in the command line:
+React Game Application
+=======================
+Welcome to the React Game Application repository! This project is built using React, TypeScript, Zustand, Vite, and Chakra UI.
 
-1) Run 'npm install'
-2) Run 'npm run dev'
 
-Enjoy :]
+Setup Instructions
+--------------------
+    1. Install dependencies: 'npm install'
+    2. Start the development server: 'npm run dev'
+
+
+Live Demo
+----------
+    Explore the live demo of this project: https://react-game-application.vercel.app
